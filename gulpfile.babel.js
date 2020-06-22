@@ -5,6 +5,8 @@ import del from 'del';
 import uglify from 'gulp-uglify';
 import browserSync from 'browser-sync';
 import sass from 'gulp-sass';
+import cleanCSS  from 'gulp-clean-css';
+import rename  from 'gulp-rename';
 
 const server = browserSync.create();
 sass.compiler = require('node-sass');
@@ -22,12 +24,27 @@ const paths = {
 
 const clean = () => del(['dist']);
 
-function scripts() {
+function scriptsDev() {
   return gulp.src(paths.scripts.src, { sourcemaps: true })
     .pipe(babel())
     .pipe(uglify())
     .pipe(concat('spoiler.min.js'))
     .pipe(gulp.dest(paths.scripts.dest));
+}
+
+function scripts() {
+  return gulp.src(paths.scripts.src, { sourcemaps: true })
+    .pipe(babel())
+    .pipe(concat('spoiler.js'))
+    .pipe(gulp.dest(paths.scripts.dest));
+}
+
+function styleDev() {
+  return gulp.src(paths.style.src)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCSS())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest(paths.style.dest));
 }
 
 function style() {
@@ -63,5 +80,6 @@ const watch = () => {
 }
 
 const build = gulp.series(clean, scripts, style, serve, watch);
+const dev = gulp.series(scriptsDev, styleDev);
 
-export default build;
+export {build, dev};
