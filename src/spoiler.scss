@@ -1,0 +1,65 @@
+$color-shadow: #fff;
+$color-more-hover: #777;
+
+.x-spoiler {
+  overflow: hidden;
+
+  &__inner {
+    display: block;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    cursor: default;
+  }
+
+  &__more {
+    display: none;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 -12px 13px 5px $color-shadow;
+    overflow: hidden;
+    max-height: 0;
+    transition: box-shadow 0.3s ease, max-height 0.3s ease;
+    user-select: none;
+  }
+
+  &__more-link {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-more-hover;
+    }
+  }
+
+  &__more-hide {
+    display: none;
+  }
+
+
+  // state
+  &.is-opened &__more-show {
+    display: none;
+  }
+
+  &.is-opened &__more-hide {
+    display: inherit;
+  }
+
+  &--has-toggle.is-opened &__more {
+    box-shadow: 0 0 0 0 transparent;
+  }
+
+  &--no-toggle.is-opened &__more {
+    box-shadow: 0 0 0 0 transparent;
+    max-height: 0;
+  }
+
+
+  // modifications
+  &--is-collapsed &__more {
+    display: block;
+    max-height: 60px;
+  }
+}

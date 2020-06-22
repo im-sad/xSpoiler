@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xSpoiler demo</title>
+  <link rel="stylesheet" href="./dist/spoiler.css">
+  <style>
+    body {
+      background: #f1f1f1;
+      font: normal 16px/1.6 'Trebuchet MS', sans-serif;
+      letter-spacing: 0.05em;
+      color: #333;
+    }
+
+
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 30px;
+      margin: 50px auto;
+    }
+
+    .page__block {
+      background: #fff;
+      padding: 20px 15px;
+      box-shadow: 0 1px 10px rgba(#000, 0.7);
+      border-radius: 5px;
+    }
+
+    .demo-1 {
+      max-height: 90px;
+    }
+
+    .demo-2 {
+      max-height: 110px;
+    }
+
+    .demo-3 {
+      max-height: 110px;
+    }
+    .demo-4 {
+      max-height: 82px;
+    }
+    .demo-5 {
+      max-height: 700px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <div class="page__block">
+    <div class="demo-1" data-spoiler="Show more..." data-spoiler-hide="Show less...">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+    </div>
+  </div>
+  <div class="page__block">
+    <div class="demo-2" data-spoiler="More..." data-spoiler-hide="Less...">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+    </div>
+  </div>
+  <div class="page__block">
+    <div class="demo-3" data-spoiler="More...">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+    </div>
+  </div>
+  <div class="page__block">
+    <div class="demo-4" data-spoiler="More...">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+    </div>
+  </div>
+  <div class="page__block">
+    <div class="demo-5" data-spoiler="More..." data-spoiler-hide="Less...">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. At a consequatur quas nulla sit nemo voluptatum, excepturi voluptas laboriosam dolores magnam distinctio quam tempora ex esse ducimus vel nesciunt velit.
+    </div>
+  </div>
+
+
+</div>
+<script src="dist/spoiler.min.js"></script>
+</body>
+</html>

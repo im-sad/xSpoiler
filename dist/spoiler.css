@@ -1,0 +1,37 @@
+.x-spoiler {
+  overflow: hidden; }
+  .x-spoiler__inner {
+    display: block;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    cursor: default; }
+  .x-spoiler__more {
+    display: none;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 -12px 13px 5px #fff;
+    overflow: hidden;
+    max-height: 0;
+    transition: box-shadow 0.3s ease, max-height 0.3s ease;
+    user-select: none; }
+  .x-spoiler__more-link {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 700;
+    cursor: pointer; }
+    .x-spoiler__more-link:hover {
+      color: #777; }
+  .x-spoiler__more-hide {
+    display: none; }
+  .x-spoiler.is-opened .x-spoiler__more-show {
+    display: none; }
+  .x-spoiler.is-opened .x-spoiler__more-hide {
+    display: inherit; }
+  .x-spoiler--has-toggle.is-opened .x-spoiler__more {
+    box-shadow: 0 0 0 0 transparent; }
+  .x-spoiler--no-toggle.is-opened .x-spoiler__more {
+    box-shadow: 0 0 0 0 transparent;
+    max-height: 0; }
+  .x-spoiler--is-collapsed .x-spoiler__more {
+    display: block;
+    max-height: 60px; }
