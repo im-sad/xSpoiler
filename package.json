@@ -4,7 +4,7 @@
   "description": "simple text spoiler",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp",
+    "start": "gulp build",
     "dev": "gulp dev"
   },
   "author": "im-sad <im-sad@ya.ru>",
@@ -19,6 +19,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
     "node-sass": "^4.14.1"

@@ -8,19 +8,37 @@ document.addEventListener(`DOMContentLoaded`, function() {
     let windowWidth = getWindowWidth();
 
     for (let i = 0; i < spolersList.length; i++) {
-      const spolersListItem = spolersList[i];
-      spolersListItem.classList.add(`x-spoiler__inner`)
+      createSpoiler(spolersList[i]);
+    }
+
+    window.addEventListener(`resize`, function() {
+      const newWindowWidth = getWindowWidth();
+
+      // if width change
+      if (newWindowWidth !== windowWidth) {
+        for (let i = 0; i < spolersList.length; i++) {
+          reDraw(spolersList[i]);
+        }
+
+        windowWidth = newWindowWidth;
+      }
+    });
+
+
+    // Functions
+    function createSpoiler(el) {
+      el.classList.add(`x-spoiler__inner`)
 
       // create text wrapper
       const spoilerWrapper = document.createElement(`div`);
 
       spoilerWrapper.className = `x-spoiler`;
-      spolersListItem.parentNode.insertBefore(spoilerWrapper, spolersListItem);
-      spoilerWrapper.appendChild(spolersListItem);
+      el.parentNode.insertBefore(spoilerWrapper, el);
+      spoilerWrapper.appendChild(el);
 
       // create btn
-      const spoilerShowText = spolersListItem.dataset.spoiler || `Show`;
-      const spoilerHideText = spolersListItem.dataset.spoilerHide;
+      const spoilerShowText = el.dataset.spoiler || `Show`;
+      const spoilerHideText = el.dataset.spoilerHide;
       const spoilerBtn = document.createElement(`div`);
       const spoilerBtnLink = document.createElement(`div`);
       const spoilerBtnLinkShow = document.createElement(`span`);
@@ -48,25 +66,12 @@ document.addEventListener(`DOMContentLoaded`, function() {
       }
 
 
-      reDraw(spolersListItem);
+      reDraw(el);
 
       spoilerBtnLink.addEventListener(`click`, function(e) {
         toggleVisibility(e.currentTarget);
       }, false);
     }
-
-    window.addEventListener(`resize`, function() {
-      const newWindowWidth = getWindowWidth();
-
-      // if width change
-      if (newWindowWidth !== windowWidth) {
-        for (let i = 0; i < spolersList.length; i++) {
-          reDraw(spolersList[i]);
-        }
-
-        windowWidth = newWindowWidth;
-      }
-    });
 
     function toggleVisibility(el) {
       const mainBlock = el.parentNode.parentNode;
@@ -80,7 +85,6 @@ document.addEventListener(`DOMContentLoaded`, function() {
         mainBlockText.style.maxHeight = mainBlockText.scrollHeight + `px`;
       }
     }
-
 
     function reDraw(el) {
       const hasElScroll = el.scrollHeight > el.clientHeight;

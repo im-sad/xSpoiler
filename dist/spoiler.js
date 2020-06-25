@@ -9,16 +9,31 @@ document.addEventListener("DOMContentLoaded", function () {
     var windowWidth = getWindowWidth();
 
     for (var i = 0; i < spolersList.length; i++) {
-      var spolersListItem = spolersList[i];
-      spolersListItem.classList.add("x-spoiler__inner"); // create text wrapper
+      createSpoiler(spolersList[i]);
+    }
+
+    window.addEventListener("resize", function () {
+      var newWindowWidth = getWindowWidth(); // if width change
+
+      if (newWindowWidth !== windowWidth) {
+        for (var _i = 0; _i < spolersList.length; _i++) {
+          reDraw(spolersList[_i]);
+        }
+
+        windowWidth = newWindowWidth;
+      }
+    }); // Functions
+
+    function createSpoiler(el) {
+      el.classList.add("x-spoiler__inner"); // create text wrapper
 
       var spoilerWrapper = document.createElement("div");
       spoilerWrapper.className = "x-spoiler";
-      spolersListItem.parentNode.insertBefore(spoilerWrapper, spolersListItem);
-      spoilerWrapper.appendChild(spolersListItem); // create btn
+      el.parentNode.insertBefore(spoilerWrapper, el);
+      spoilerWrapper.appendChild(el); // create btn
 
-      var spoilerShowText = spolersListItem.dataset.spoiler || "Show";
-      var spoilerHideText = spolersListItem.dataset.spoilerHide;
+      var spoilerShowText = el.dataset.spoiler || "Show";
+      var spoilerHideText = el.dataset.spoilerHide;
       var spoilerBtn = document.createElement("div");
       var spoilerBtnLink = document.createElement("div");
       var spoilerBtnLinkShow = document.createElement("span");
@@ -40,23 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
         spoilerWrapper.classList.add("x-spoiler--no-toggle");
       }
 
-      reDraw(spolersListItem);
+      reDraw(el);
       spoilerBtnLink.addEventListener("click", function (e) {
         toggleVisibility(e.currentTarget);
       }, false);
     }
-
-    window.addEventListener("resize", function () {
-      var newWindowWidth = getWindowWidth(); // if width change
-
-      if (newWindowWidth !== windowWidth) {
-        for (var _i = 0; _i < spolersList.length; _i++) {
-          reDraw(spolersList[_i]);
-        }
-
-        windowWidth = newWindowWidth;
-      }
-    });
 
     function toggleVisibility(el) {
       var mainBlock = el.parentNode.parentNode;
