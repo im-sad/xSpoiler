@@ -1,8 +1,6 @@
 document.addEventListener(`DOMContentLoaded`, function() {
   `use strict`;
 
-  // TODO: Add throttle
-
   (function initSpoilers() {
     const spolersList = document.querySelectorAll(`[data-spoiler]`);
     let windowWidth = getWindowWidth();
@@ -29,7 +27,7 @@ document.addEventListener(`DOMContentLoaded`, function() {
     }
 
     function createSpoiler(el) {
-      el.classList.add(`x-spoiler__inner`)
+      el.classList.add(`x-spoiler__inner`);
 
       // create text wrapper
       const spoilerWrapper = document.createElement(`div`);
@@ -108,9 +106,11 @@ document.addEventListener(`DOMContentLoaded`, function() {
     }
 
     function debounce(func, wait, immediate) {
-      var timeout;
+      let timeout;
+
       return function() {
-        var context = this, args = arguments;
+        const context = this, args = arguments;
+
         clearTimeout(timeout);
         timeout = setTimeout(function() {
           timeout = null;
