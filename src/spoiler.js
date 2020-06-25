@@ -11,7 +11,11 @@ document.addEventListener(`DOMContentLoaded`, function() {
       createSpoiler(spolersList[i]);
     }
 
-    window.addEventListener(`resize`, function() {
+    window.addEventListener(`resize`, debounce(updateSpoilers, 200));
+
+
+    // Functions
+    function updateSpoilers() {
       const newWindowWidth = getWindowWidth();
 
       // if width change
@@ -22,10 +26,8 @@ document.addEventListener(`DOMContentLoaded`, function() {
 
         windowWidth = newWindowWidth;
       }
-    });
+    }
 
-
-    // Functions
     function createSpoiler(el) {
       el.classList.add(`x-spoiler__inner`)
 
@@ -103,6 +105,19 @@ document.addEventListener(`DOMContentLoaded`, function() {
 
     function getWindowWidth() {
       return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    }
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        }, wait);
+        if (immediate && !timeout) func.apply(context, args);
+      };
     }
   })();
 

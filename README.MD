@@ -13,3 +13,6 @@
 
 ### Run
 `$ npm start`
+
+### Compile min versions
+`$ npm run dev`
